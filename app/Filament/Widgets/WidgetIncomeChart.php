@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use Illuminate\Support\Carbon;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 
+
 class WidgetIncomeChart extends ChartWidget
 {
     use InteractsWithPageFilters;
@@ -26,12 +27,12 @@ class WidgetIncomeChart extends ChartWidget
         now();
         
         $data = Trend::query(Transaction::Incomes())
-        ->between(
+            ->between(
             start: $startDate,
             end: $endDate,
-        )
-        ->perDay()
-        ->sum('amount');
+            )
+            ->perDay()
+            ->sum('amount');
  
     return [
         'datasets' => [

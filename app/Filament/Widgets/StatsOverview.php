@@ -24,10 +24,10 @@ class StatsOverview extends BaseWidget
 
         
         $pemasukan = Transaction::incomes()
-            ->WhereBetween('date_transaction', [$startDate, $endDate])
+            ->whereBetween('date_transaction', [$startDate, $endDate])
             ->sum('amount');
         $pengeluaran = Transaction::expenses()
-            ->WhereBetween('date_transaction', [$startDate, $endDate])
+            ->whereBetween('date_transaction', [$startDate, $endDate])
             ->sum('amount');
         return [
             Stat::make('Total Pemasukan', 'Rp.'.' '.$pemasukan),

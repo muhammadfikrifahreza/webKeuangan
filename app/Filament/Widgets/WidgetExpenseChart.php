@@ -25,13 +25,13 @@ class WidgetExpenseChart extends ChartWidget
         Carbon::parse($this->filters['endDate']) :
         now();
         
-        $data = Trend::query(Transaction::Expenses())
-        ->between(
-            start: $startDate,
-            end: $endDate,
-        )
-        ->perDay()
-        ->sum('amount');
+        $data = Trend::query(Transaction::Incomes())
+            ->between(
+                start: $startDate,
+                end: $endDate,
+                )
+            ->perDay()
+            ->sum('amount');
  
     return [
         'datasets' => [
